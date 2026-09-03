@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Korux — Governed AI Workforce OS",
   description:
-    "Where governed AI workflows take the stage. Join the waitlist for early access to Korux.",
+    "Orchestrate AI staff with scoped secrets, visual workflows, and a Governor on external actions. Join the waitlist for early access.",
   icons: {
     icon: "/logo-mark.svg",
   },
   openGraph: {
     title: "Korux — Governed AI Workforce OS",
     description:
-      "Where governed AI workflows take the stage. Join the waitlist for early access.",
+      "Autonomy with governance: multi-agent workforce, per-agent vault, and human approval before high-stakes actions.",
     url: "https://korux.ai",
     siteName: "Korux",
     type: "website",

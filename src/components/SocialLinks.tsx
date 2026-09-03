@@ -39,6 +39,14 @@ export function SocialLinks() {
           <path d="M18.9 1.15h3.67l-8.02 9.16L24 22.85h-7.4l-5.8-7.58-6.63 7.58H.49l8.57-9.8L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.49h2.03L6.53 3.24H4.35l13.26 17.4z" />
         </svg>
       </a>
+      <a
+        href="https://github.com/orgs/korux-ai/discussions"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${linkClass} text-sm`}
+      >
+        Discuss on GitHub
+      </a>
       <a href="mailto:kenny.yue@gmail.com" className={`${linkClass} text-sm`}>
         kenny.yue@gmail.com
       </a>

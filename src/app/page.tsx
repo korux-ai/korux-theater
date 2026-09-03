@@ -2,118 +2,372 @@ import Image from "next/image";
 import { SocialLinks } from "@/components/SocialLinks";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
-const features = [
+const contrasts = [
   {
-    title: "Marquee",
-    subtitle: "Landing & Story",
-    description: "The public entrance — product narrative, pricing, and waitlist.",
+    title: "Workflow tools",
+    examples: "n8n, Zapier, Make",
+    strength: "Excellent at wiring apps together and showing run history.",
+    gap: "Weak agent identity, weak per-agent secret isolation, and little native governance when something leaves your perimeter.",
   },
   {
-    title: "Box Office",
-    subtitle: "Billing",
-    description: "Stripe-powered plans with hybrid token billing.",
+    title: "Agent frameworks",
+    examples: "CrewAI, AutoGen, LangGraph apps",
+    strength: "Powerful multi-agent logic for developers who can code the whole stack.",
+    gap: "Thin business UI and thin production guardrails for high-stakes side effects — email, CRM writes, trades, ads.",
   },
   {
-    title: "The Stage",
-    subtitle: "Workflow Sharing",
-    description: "Publish and share governed AI workflows with the world.",
+    title: "AI employee apps",
+    examples: "Lindy-class products",
+    strength: "Easy hiring metaphor and templates that feel approachable.",
+    gap: "Risk control is often opaque. Auditability is limited. You scale the agent before you can prove the brake works.",
+  },
+];
+
+const pillars = [
+  {
+    title: "Governor",
+    lead: "A dedicated runtime layer that watches agents where it matters — on external side effects.",
+    body: "When an action looks risky or crosses an Internal → External boundary, Korux can pause the workflow and route the decision to a human instead of hoping a post-mortem catches it. Policies can encode rate limits, amount thresholds, forbidden actions, and connector-level rules so governance travels with the capability — not as a spreadsheet you remember later.",
+    points: [
+      "Intercept before send, publish, mutate, or trade",
+      "Pause + notify instead of silent failure",
+      "Per-connector governor packs alongside manifests",
+    ],
   },
   {
-    title: "The Audience",
-    subtitle: "Community Gallery",
-    description: "Browse, fork, and remix workflows from other builders.",
+    title: "Human-in-the-loop",
+    lead: "Approvals are a first-class surface — not a buried webhook.",
+    body: "High-risk actions land in an approval experience where you can approve, reject, or always-allow similar cases (and revoke later). Invite an Approver who can decide gated actions without needing full admin access or vault credentials. Your AI workforce can move; the final say stays with a person you trust.",
+    points: [
+      "Approve / reject pending actions from a dashboard",
+      "Always-allow similar with explicit revoke",
+      "Approver role without Vault access",
+    ],
+  },
+  {
+    title: "Per-agent Secret Vault",
+    lead: "Credentials are scoped to the agent that needs them — and kept out of the model.",
+    body: "An email agent gets mail credentials; a trading agent gets broker credentials; nothing more. Secrets are injected at the tool / proxy boundary so LLMs never see raw keys in context. That is how you run many agents without turning every prompt into a credential leak.",
+    points: [
+      "Per-agent credential isolation",
+      "Inject at tool boundary, not into prompts",
+      "Least-privilege by default for each role",
+    ],
+  },
+  {
+    title: "Virtual staff & workflows",
+    lead: "Hire agents with roles and tools, then wire them into governed pipelines.",
+    body: "Define marketing, research, support, or ops agents with system prompts and bound capabilities. Author workflows visually, or propose a Workflow Spec from natural language and confirm it before it runs. Schedule and monitor triggers keep work moving — while Governor still sits on external writes.",
+    points: [
+      "Agent builder with prompt + tool binding",
+      "NL → Spec → confirm before execute",
+      "Runs history for debugging and review",
+    ],
+  },
+  {
+    title: "Connectors with rules built in",
+    lead: "Capabilities ship as packages: what they do, how risky they are, and when a human must gate.",
+    body: "The open korux-repertoire catalog covers mail, IMAP, web research, social publish, CRM notes, ads mutate, analytics reads, and more. Each package carries a manifest and governor rules — for example, outbound email that requires human confirmation before send. Governance is co-shipped with the connector, not bolted on after an incident.",
+    points: [
+      "Risk metadata and I/O boundary in the manifest",
+      "governor.json rules such as require_human",
+      "First-party catalog you can read on GitHub today",
+    ],
+  },
+  {
+    title: "Audit & visibility",
+    lead: "Trustworthy scale needs a readable trail — not a black box.",
+    body: "Intercept logs, run history, and step-level audit envelopes help you answer what ran, what was blocked, and who decided. Usage visibility keeps token burn observable. Frame it as operational accountability for builders and operators — clear enough for a non-engineer Approver to follow the story of a gated action.",
+    points: [
+      "Governor intercept log and risk alerts",
+      "Step-level execution accountability",
+      "Usage visibility for LLM spend",
+    ],
+  },
+];
+
+const flowSteps = [
+  {
+    title: "Agent prepares the outbound action",
+    detail:
+      "A research or executor agent drafts an external email — recipient, subject, body — as part of a governed workflow, not a free-form chat with your company mailbox.",
+  },
+  {
+    title: "Governor intercepts on external write",
+    detail:
+      "Because the action writes outside your boundary, the mail capability’s governor rules can pause execution. The side effect does not fire yet. The workflow waits on a human decision.",
+  },
+  {
+    title: "You decide in Message Hub",
+    detail:
+      "Approve as-is, approve with edits (to / subject / body), always allow similar, or reject. The brake sits before Internal → External — not after the message is already gone.",
+  },
+];
+
+const audiences = [
+  {
+    title: "Solopreneurs & founder-operators",
+    detail:
+      "Run a one-person company with virtual staff — research, outreach, ops — without treating autonomy as an all-or-nothing liability.",
+  },
+  {
+    title: "Small teams with a trusted Approver",
+    detail:
+      "Invite a Collaborator to build, and an Approver to gate high-stakes actions, without handing over the entire vault.",
+  },
+  {
+    title: "Builders who care about side effects",
+    detail:
+      "If your agents will touch email, CRM, social, ads, or paper trading, you need identity, secrets, and governor packs — not just another prompt chain.",
   },
 ];
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
           <Image src="/logo-mark.svg" alt="" width={36} height={36} priority />
           <span className="text-lg font-semibold tracking-tight">Korux</span>
         </div>
-        <a
-          href="#waitlist"
-          className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
-        >
-          Join Waitlist
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/orgs/korux-ai/discussions"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary sm:inline"
+          >
+            Discussions
+          </a>
+          <a
+            href="#waitlist"
+            className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
+          >
+            Join Waitlist
+          </a>
+        </div>
       </header>
 
-      {/* Hero */}
       <main className="mx-auto max-w-6xl px-6 pb-24">
         <section className="flex flex-col items-center pt-16 text-center md:pt-24">
-          <div className="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-            Early Access — Join the Waitlist
-          </div>
+          <p className="animate-fade-up text-sm font-medium uppercase tracking-[0.2em] text-primary">
+            Korux
+          </p>
 
-          <h1 className="animate-fade-up-delay-1 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl md:leading-[1.1]">
+          <h1 className="animate-fade-up-delay-1 mt-4 max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl md:leading-[1.1]">
             The Governed AI{" "}
             <span className="text-primary">Workforce OS</span>
           </h1>
 
-          <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Where governed AI workflows take the stage. Build, share, and run
-            AI agents with guardrails — from solo builders to enterprise teams.
+          <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+            Orchestrate AI employees with scoped secrets, visual workflows, and
+            built-in risk control — so you can scale a multi-agent workforce
+            without losing command.
           </p>
 
           <div id="waitlist" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
             <WaitlistForm />
             <p className="mt-3 text-xs text-muted">
-              No spam. Early access invites only.
+              Early access invites only. No spam.
             </p>
           </div>
         </section>
 
-        {/* Features */}
-        <section className="mt-32">
+        <section className="mt-28 md:mt-36">
           <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            The Theater
+            The false choice
           </h2>
-          <p className="mt-3 text-center text-2xl font-bold tracking-tight">
-            Every great show needs a venue
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Most AI platforms force you to pick speed or control
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            Workflow tools automate apps but barely model agents. Frameworks give
+            developers multi-agent power without production brakes. AI employee
+            apps feel easy — until you cannot see who approved what. Korux is
+            built for solopreneurs and small teams who want scaling power{" "}
+            <em className="text-foreground not-italic font-medium">and</em>{" "}
+            enterprise-grade command: many agents, one Governor.
           </p>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="rounded-2xl border border-border bg-white p-6 transition-shadow hover:shadow-md"
-              >
-                <div className="flex items-baseline gap-2">
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <span className="text-sm text-muted">{feature.subtitle}</span>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {feature.description}
+          <div className="mt-14 grid gap-12 sm:grid-cols-3">
+            {contrasts.map((item) => (
+              <div key={item.title} className="border-t border-border pt-6">
+                <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-1 text-xs uppercase tracking-wide text-muted">{item.examples}</p>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/90">
+                  <span className="font-medium text-foreground">Strength: </span>
+                  {item.strength}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  <span className="font-medium text-foreground">Gap: </span>
+                  {item.gap}
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mt-32 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:p-16">
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Ready to step onto the stage?
+        <section className="mt-28 md:mt-36">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            What you get
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-muted">
-            Be among the first to experience governed AI workflows. Join the
-            waitlist and we&apos;ll notify you when Korux opens its doors.
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Autonomy with governance — trustworthy scale for a one-person company
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            Korux is not a generic chatbot toolkit. The product value is{" "}
+            <span className="text-foreground font-medium">trustworthy scale</span>
+            : many agents under explicit command, with border control on data and
+            side effects. Below is what that looks like in practice.
+          </p>
+
+          <div className="mt-16 space-y-14">
+            {pillars.map((pillar) => (
+              <article key={pillar.title} className="border-t border-border pt-8 md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] md:gap-12">
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight">{pillar.title}</h3>
+                  <p className="mt-3 text-sm font-medium leading-relaxed text-foreground/90">
+                    {pillar.lead}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm leading-relaxed text-muted">{pillar.body}</p>
+                  <ul className="mt-5 space-y-2">
+                    {pillar.points.map((point) => (
+                      <li key={point} className="flex gap-3 text-sm text-foreground/85">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" aria-hidden />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-28 md:mt-36">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            A concrete moment
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Agent drafts an external email. Governor intercepts — before it sends.
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            This is the difference between “AI that can do anything” and AI you
+            can actually run near a company mailbox. In the open mail capability
+            pack, outbound send can require human confirmation by default when the
+            action writes externally. Speed without steering is not automation —
+            it is liability.
+          </p>
+
+          <ol className="mx-auto mt-14 max-w-3xl space-y-10">
+            {flowSteps.map((step, index) => (
+              <li key={step.title} className="flex gap-5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/25 text-xs font-semibold text-primary">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <p className="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-muted">
+            The same pattern applies beyond email: social publish, CRM writes,
+            ads mutations, and other external side effects can carry governor
+            rules in the capability package — so the brake is defined with the
+            tool, not reinvented for every workflow.
+          </p>
+        </section>
+
+        <section className="mt-28 md:mt-36">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            Who it is for
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Built first for one-person companies — and the humans who approve risk
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            Korux S1 focuses on the founder-operator who needs virtual staff now,
+            with clear roles for people who build and people who decide. Larger
+            multi-department topologies are on the roadmap; we will not pretend
+            they are the product you get on day one.
+          </p>
+
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {audiences.map((audience) => (
+              <div key={audience.title} className="border-t border-border pt-6">
+                <h3 className="text-base font-semibold text-foreground">{audience.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{audience.detail}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-28 md:mt-36">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            Build in the open
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Capability catalog on GitHub. Requirements in Discussions.
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            You can already read how connectors declare risk and human gates in{" "}
+            <a
+              href="https://github.com/korux-ai/korux-repertoire"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              korux-repertoire
+            </a>
+            — mail, research, social, CRM, ads, and more. If you have strong
+            opinions about where brakes should sit, bring them to{" "}
+            <a
+              href="https://github.com/orgs/korux-ai/discussions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              GitHub Discussions
+            </a>
+            : Announcements for official updates, Ideas for features, Governance
+            for approval boundaries, and Q&amp;A for concepts.
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
+            Waitlist is for launch access. Discussions are for shaping the
+            product in public. Use both — they serve different jobs.
+          </p>
+        </section>
+
+        <section className="mt-28 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:mt-36 md:p-16">
+          <h2 className="text-2xl font-bold md:text-3xl">
+            Ready for agents with brakes?
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
+            Join the early-access waitlist and we will notify you when Korux
+            opens. Prefer to influence defaults first? Tell us which actions
+            should never run unsupervised in Discussions.
           </p>
           <div className="mt-8 flex justify-center">
             <WaitlistForm />
           </div>
+          <p className="mt-6 text-sm text-muted">
+            <a
+              href="https://github.com/orgs/korux-ai/discussions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              Join the conversation on GitHub →
+            </a>
+          </p>
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted sm:flex-row">
           <div className="flex items-center gap-2">
