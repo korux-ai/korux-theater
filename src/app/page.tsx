@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SocialLinks } from "@/components/SocialLinks";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 const features = [
@@ -30,7 +31,7 @@ export default function Home() {
       {/* Header */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Korux" width={36} height={36} priority />
+          <Image src="/logo-mark.svg" alt="" width={36} height={36} priority />
           <span className="text-lg font-semibold tracking-tight">Korux</span>
         </div>
         <a
@@ -116,22 +117,10 @@ export default function Home() {
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted sm:flex-row">
           <div className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="Korux" width={20} height={20} />
+            <Image src="/logo-mark.svg" alt="" width={20} height={20} />
             <span>© {new Date().getFullYear()} Korux.ai</span>
           </div>
-          <div className="flex gap-6">
-            <a
-              href="https://github.com/korux-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
-            >
-              GitHub
-            </a>
-            <a href="mailto:hello@korux.ai" className="transition-colors hover:text-primary">
-              hello@korux.ai
-            </a>
-          </div>
+          <SocialLinks />
         </div>
       </footer>
     </div>

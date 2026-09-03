@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Korux — Governed AI Workforce OS",
   description:
     "Where governed AI workflows take the stage. Join the waitlist for early access to Korux.",
+  icons: {
+    icon: "/logo-mark.svg",
+  },
   openGraph: {
     title: "Korux — Governed AI Workforce OS",
     description:
