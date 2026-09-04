@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { JsonLd } from "@/components/JsonLd";
 import { SocialLinks } from "@/components/SocialLinks";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
@@ -124,9 +125,51 @@ const audiences = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What is Korux?",
+    answer:
+      "Korux is the Governed AI Workforce OS: a platform to build and safely run AI agents for everyday workflows. It combines natural-language workflow authoring, per-agent secrets, a Governor on external side effects, and human-in-the-loop approvals in one product.",
+  },
+  {
+    question: "How is Korux different from a typical AI agent or chatbot tool?",
+    answer:
+      "Most agent tools optimize for autonomy and speed. Korux treats governance as a first-class runtime: when an agent is about to email, publish, write to CRM, or otherwise leave your boundary, rules can pause the action for human approval. Secrets stay scoped per agent and out of the model context.",
+  },
+  {
+    question: "Who is Korux for?",
+    answer:
+      "Korux S1 focuses on solopreneurs and founder-operators who need virtual staff now, plus small teams with a trusted Approver. It is built for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
+  },
+  {
+    question: "What does the Governor do?",
+    answer:
+      "The Governor watches agents on external side effects. When an action looks risky or crosses an Internal → External boundary, Korux can pause the workflow and route the decision to a human — with policies for rate limits, thresholds, forbidden actions, and connector-level rules.",
+  },
+  {
+    question: "Is Korux available today?",
+    answer:
+      "Korux is in early access. Join the waitlist on korux.ai for launch invites. Capability packages and governance patterns are already visible in the open korux-repertoire catalog on GitHub; product direction is shaped in GitHub Discussions.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={faqJsonLd} />
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
           <Image src="/logo-mark.svg" alt="" width={36} height={36} priority />
@@ -342,6 +385,34 @@ export default function Home() {
             Waitlist is for launch access. Discussions are for shaping the
             product in public. Use both — they serve different jobs.
           </p>
+        </section>
+
+        <section id="faq" className="mt-28 scroll-mt-24 md:mt-36">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+            FAQ
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Korux in plain terms
+          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+            Short answers for searchers and AI assistants: what Korux is, who it
+            serves, and how governance differs from unconstrained agent tools.
+          </p>
+
+          <dl className="mx-auto mt-14 max-w-3xl space-y-10">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="border-t border-border pt-6">
+                <dt>
+                  <h3 className="text-base font-semibold text-foreground">
+                    {faq.question}
+                  </h3>
+                </dt>
+                <dd className="mt-3 text-sm leading-relaxed text-muted">
+                  {faq.answer}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section className="mt-28 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:mt-36 md:p-16">
