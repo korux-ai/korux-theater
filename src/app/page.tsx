@@ -151,7 +151,7 @@ const faqs = [
   {
     question: "Who is Korux for?",
     answer:
-      "Korux today focuses on solopreneurs and founder-operators who need virtual staff now, plus small teams with a trusted Approver. It is built for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
+      "Korux is aimed first at solopreneurs and founder-operators who want virtual staff, plus small teams with a trusted Approver. It is for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
   },
   {
     question: "What does the Governor do?",
@@ -161,7 +161,7 @@ const faqs = [
   {
     question: "Is Korux available today?",
     answer:
-      "Korux is in early access. Join the waitlist on korux.ai for launch invites. Capability packages and governance patterns are already visible in the open korux-repertoire catalog on GitHub; product direction is shaped in GitHub Discussions.",
+      "Not yet as a public product — Korux is still under active development. Join the waitlist on korux.ai to hear when early access opens. Meanwhile, capability packages and governance patterns are visible in the open korux-repertoire catalog on GitHub, and product direction is shaped in GitHub Discussions.",
   },
 ];
 
@@ -226,7 +226,7 @@ export default function Home() {
           <div id="waitlist" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
             <WaitlistForm />
             <p className="mt-3 text-xs text-muted">
-              Early access invites only. No spam.
+              Still building — we&apos;ll email when it opens. No spam.
             </p>
           </div>
         </section>
@@ -270,17 +270,17 @@ export default function Home() {
         <section className="mt-28 md:mt-36">
           <Reveal>
             <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-              What you get
+              What we&apos;re building
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
               Autonomy with governance — trustworthy scale for a one-person company
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-              The product value is{" "}
+              The product value we are designing for is{" "}
               <span className="text-foreground font-medium">trustworthy scale</span>
               : many agents under explicit command, with border control on data and
               side effects — so people who know the work can automate it safely.
-              Below is how the platform supports that.
+              Below is how the platform is meant to support that.
             </p>
           </Reveal>
 
@@ -365,10 +365,10 @@ export default function Home() {
               Built first for one-person companies — and the humans who approve risk
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-              Korux today focuses on the founder-operator who needs virtual staff now,
+              Korux is aimed first at the founder-operator who wants virtual staff,
               with clear roles for people who build and people who decide. Larger
-              multi-department topologies are on the roadmap; we will not pretend
-              they are the product you get on day one.
+              multi-department topologies are on the roadmap; they are not the first
+              cut we plan to ship.
             </p>
           </Reveal>
 
@@ -445,8 +445,8 @@ export default function Home() {
               for approval boundaries, and Q&amp;A for concepts.
             </p>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
-              Waitlist is for launch access. Discussions are for shaping the
-              product in public. Use both — they serve different jobs.
+              The waitlist is for launch updates while we build. Discussions are for
+              shaping the product in public. Use both — they serve different jobs.
             </p>
           </Reveal>
         </section>
@@ -486,12 +486,12 @@ export default function Home() {
         <Reveal>
           <section className="mt-28 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:mt-36 md:p-16">
             <h2 className="text-2xl font-bold md:text-3xl">
-              Ready for agents with brakes?
+              Want agents with brakes?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
-              Join the early-access waitlist and we will notify you when Korux
-              opens. Prefer to influence defaults first? Tell us which actions
-              should never run unsupervised in Discussions.
+              Korux is still under development. Join the waitlist and we will notify
+              you when it opens. Prefer to influence defaults first? Tell us which
+              actions should never run unsupervised in Discussions.
             </p>
             <div className="mt-8 flex justify-center">
               <WaitlistForm />

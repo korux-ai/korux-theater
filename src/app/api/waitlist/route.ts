@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   if (error) {
     if (error.code === "23505") {
       return NextResponse.json(
-        { message: "You're already on the list! We'll be in touch." },
+        { message: "You're already on the list! We'll email when Korux opens." },
         { status: 200 },
       );
     }
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json(
-    { message: "You're on the list! We'll notify you when Korux launches." },
+    { message: "You're on the list! We'll email when Korux opens." },
     { status: 201 },
   );
 }

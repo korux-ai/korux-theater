@@ -9,7 +9,7 @@ import "./globals.css";
 const siteUrl = "https://korux.ai";
 const title = "Korux — Governed AI Workforce OS";
 const description =
-  "Orchestrate AI staff with scoped secrets, visual workflows, and a Governor on external actions. Join the waitlist for early access.";
+  "Korux is the Governed AI Workforce OS, still under active development. Join the waitlist to hear when it opens.";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,7 +96,7 @@ const softwareJsonLd = {
     price: "0",
     priceCurrency: "USD",
     availability: "https://schema.org/PreOrder",
-    description: "Early access waitlist",
+    description: "Waitlist for the upcoming public release",
   },
   publisher: {
     "@type": "Organization",
