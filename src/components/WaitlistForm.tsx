@@ -46,11 +46,11 @@ export function WaitlistForm() {
           name="email"
           required
           autoComplete="email"
-          placeholder="you@company.com"
+          placeholder="you@example.com"
           value={email}
           disabled={status === "loading" || status === "success"}
           onChange={(event) => setEmail(event.target.value)}
-          className="min-w-0 flex-1 rounded-xl border border-border bg-white px-4 py-3 text-sm text-foreground outline-none transition-shadow placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+          className="min-w-0 flex-1 rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground outline-none transition-shadow placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
         />
         <button
           type="submit"
@@ -64,7 +64,7 @@ export function WaitlistForm() {
       {message && (
         <p
           role="status"
-          className={`mt-3 text-sm ${status === "error" ? "text-red-600" : "text-primary"}`}
+          className={`mt-3 text-sm ${status === "error" ? "text-red-500" : "text-primary"}`}
         >
           {message}
         </p>

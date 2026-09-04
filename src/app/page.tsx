@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { SocialLinks } from "@/components/SocialLinks";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 const emergingNeeds = [
@@ -132,6 +134,16 @@ const faqs = [
       "Korux is the Governed AI Workforce OS: a platform to build and safely run AI agents for everyday workflows. It combines natural-language workflow authoring, per-agent secrets, a Governor on external side effects, and human-in-the-loop approvals in one product.",
   },
   {
+    question: "Where does the name Korux come from?",
+    answer:
+      "Korux takes its sound from chorus — many voices, each with a part, becoming music only when they share one score. The idea is that anyone can assemble an AI agent team like a choir: specialized roles, a shared workflow, and one human conductor.",
+  },
+  {
+    question: "What does “the more, the better” have to do with Korux?",
+    answer:
+      "It nods to an Eastern saying (duō duō yì shàn) linked to Han Xin: forces grow stronger under clear command. On Korux, more AI agents should mean more work done — with the Governor and human approval as the command that keeps scale trustworthy.",
+  },
+  {
     question: "How is Korux different from a typical AI agent or chatbot tool?",
     answer:
       "Most agent tools optimize for autonomy and speed. Korux treats governance as a first-class runtime: when an agent is about to email, publish, write to CRM, or otherwise leave your boundary, rules can pause the action for human approval. Secrets stay scoped per agent and out of the model context.",
@@ -139,7 +151,7 @@ const faqs = [
   {
     question: "Who is Korux for?",
     answer:
-      "Korux S1 focuses on solopreneurs and founder-operators who need virtual staff now, plus small teams with a trusted Approver. It is built for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
+      "Korux today focuses on solopreneurs and founder-operators who need virtual staff now, plus small teams with a trusted Approver. It is built for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
   },
   {
     question: "What does the Governor do?",
@@ -175,7 +187,8 @@ export default function Home() {
           <Image src="/logo-mark.svg" alt="" width={36} height={36} priority />
           <span className="text-lg font-semibold tracking-tight">Korux</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           <a
             href="https://github.com/orgs/korux-ai/discussions"
             target="_blank"
@@ -219,225 +232,282 @@ export default function Home() {
         </section>
 
         <section className="mt-28 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            A new kind of need
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            A platform for the new work of AI agents — easy to build, safe to run
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Korux is built for a need that is becoming common: virtual staff that
-            can research, draft, and take real-world actions — while people stay
-            in command. Our aim is simple: anyone should be able to build and
-            safely use AI agents to take over repetitive daily workflows, without
-            a technology background — staying focused on their business and
-            process. That means{" "}
-            <span className="font-medium text-foreground">
-              natural language → confirmed workflow
-            </span>
-            , runtime governance on external side effects, and human-in-the-loop
-            as a first-class path — designed into one platform, not bolted on
-            later.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              A new kind of need
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              A platform for the new work of AI agents — easy to build, safe to run
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              Korux is built for a need that is becoming common: virtual staff that
+              can research, draft, and take real-world actions — while people stay
+              in command. Our aim is simple: anyone should be able to build and
+              safely use AI agents to take over repetitive daily workflows, without
+              a technology background — staying focused on their business and
+              process. That means{" "}
+              <span className="font-medium text-foreground">
+                natural language → confirmed workflow
+              </span>
+              , runtime governance on external side effects, and human-in-the-loop
+              as a first-class path — designed into one platform, not bolted on
+              later.
+            </p>
+          </Reveal>
 
           <div className="mt-14 grid gap-10 sm:grid-cols-2">
-            {emergingNeeds.map((item) => (
-              <div key={item.title} className="border-t border-border pt-6">
-                <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{item.detail}</p>
-              </div>
+            {emergingNeeds.map((item, index) => (
+              <Reveal key={item.title} delayMs={index * 70}>
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{item.detail}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         <section className="mt-28 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            What you get
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Autonomy with governance — trustworthy scale for a one-person company
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            The product value is{" "}
-            <span className="text-foreground font-medium">trustworthy scale</span>
-            : many agents under explicit command, with border control on data and
-            side effects — so people who know the work can automate it safely.
-            Below is how the platform supports that.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              What you get
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Autonomy with governance — trustworthy scale for a one-person company
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              The product value is{" "}
+              <span className="text-foreground font-medium">trustworthy scale</span>
+              : many agents under explicit command, with border control on data and
+              side effects — so people who know the work can automate it safely.
+              Below is how the platform supports that.
+            </p>
+          </Reveal>
 
           <div className="mt-16 space-y-14">
-            {pillars.map((pillar) => (
-              <article key={pillar.title} className="border-t border-border pt-8 md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] md:gap-12">
-                <div>
-                  <h3 className="text-xl font-semibold tracking-tight">{pillar.title}</h3>
-                  <p className="mt-3 text-sm font-medium leading-relaxed text-foreground/90">
-                    {pillar.lead}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm leading-relaxed text-muted">{pillar.body}</p>
-                  <ul className="mt-5 space-y-2">
-                    {pillar.points.map((point) => (
-                      <li key={point} className="flex gap-3 text-sm text-foreground/85">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" aria-hidden />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
+            {pillars.map((pillar, index) => (
+              <Reveal key={pillar.title} delayMs={Math.min(index, 3) * 60}>
+                <article className="border-t border-border pt-8 md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] md:gap-12">
+                  <div>
+                    <h3 className="text-xl font-semibold tracking-tight">{pillar.title}</h3>
+                    <p className="mt-3 text-sm font-medium leading-relaxed text-foreground/90">
+                      {pillar.lead}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm leading-relaxed text-muted">{pillar.body}</p>
+                    <ul className="mt-5 space-y-2">
+                      {pillar.points.map((point) => (
+                        <li key={point} className="flex gap-3 text-sm text-foreground/85">
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" aria-hidden />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
         </section>
 
         <section className="mt-28 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            A concrete moment
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Agent drafts an external email. Governor intercepts — before it sends.
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            This is the difference between “AI that can do anything” and AI you
-            can actually run near a company mailbox. In the open mail capability
-            pack, outbound send can require human confirmation by default when the
-            action writes externally. Speed without steering is not automation —
-            it is liability.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              A concrete moment
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Agent drafts an external email. Governor intercepts — before it sends.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              This is the difference between “AI that can do anything” and AI you
+              can actually run near a company mailbox. In the open mail capability
+              pack, outbound send can require human confirmation by default when the
+              action writes externally. Speed without steering is not automation —
+              it is liability.
+            </p>
+          </Reveal>
 
           <ol className="mx-auto mt-14 max-w-3xl space-y-10">
             {flowSteps.map((step, index) => (
-              <li key={step.title} className="flex gap-5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/25 text-xs font-semibold text-primary">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
-                </div>
+              <li key={step.title}>
+                <Reveal delayMs={index * 80}>
+                  <div className="flex gap-5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/25 text-xs font-semibold text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
+                    </div>
+                  </div>
+                </Reveal>
               </li>
             ))}
           </ol>
 
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-muted">
-            The same pattern applies beyond email: social publish, CRM writes,
-            ads mutations, and other external side effects can carry governor
-            rules in the capability package — so the brake is defined with the
-            tool, not reinvented for every workflow.
-          </p>
+          <Reveal delayMs={120}>
+            <p className="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-muted">
+              The same pattern applies beyond email: social publish, CRM writes,
+              ads mutations, and other external side effects can carry governor
+              rules in the capability package — so the brake is defined with the
+              tool, not reinvented for every workflow.
+            </p>
+          </Reveal>
         </section>
 
         <section className="mt-28 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            Who it is for
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Built first for one-person companies — and the humans who approve risk
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Korux S1 focuses on the founder-operator who needs virtual staff now,
-            with clear roles for people who build and people who decide. Larger
-            multi-department topologies are on the roadmap; we will not pretend
-            they are the product you get on day one.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              Who it is for
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Built first for one-person companies — and the humans who approve risk
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              Korux today focuses on the founder-operator who needs virtual staff now,
+              with clear roles for people who build and people who decide. Larger
+              multi-department topologies are on the roadmap; we will not pretend
+              they are the product you get on day one.
+            </p>
+          </Reveal>
 
           <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {audiences.map((audience) => (
-              <div key={audience.title} className="border-t border-border pt-6">
-                <h3 className="text-base font-semibold text-foreground">{audience.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{audience.detail}</p>
-              </div>
+            {audiences.map((audience, index) => (
+              <Reveal key={audience.title} delayMs={index * 70}>
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-base font-semibold text-foreground">{audience.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{audience.detail}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
+        <section id="why-the-name" className="mt-28 scroll-mt-24 md:mt-36">
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              Why the name
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              A chorus under command
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              Korux takes its sound from{" "}
+              <span className="font-medium text-foreground">chorus</span> — many
+              voices, each with a part, becoming music only when they share one score.
+              We imagine every founder conducting an AI agent team the same way:
+              roles that specialize, a workflow that keeps time, and a human who still
+              holds the baton.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              That idea meets an older Eastern saying often rendered as{" "}
+              <span className="font-medium text-foreground">
+                &ldquo;the more, the better&rdquo;
+              </span>{" "}
+              — Han Xin&apos;s answer that forces grow stronger under clear command. On
+              Korux, more agents should mean more work done. The Governor and human
+              approval are how &ldquo;more&rdquo; becomes &ldquo;better,&rdquo; not
+              chaos.
+            </p>
+          </Reveal>
+        </section>
+
         <section className="mt-28 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            Build in the open
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Capability catalog on GitHub. Requirements in Discussions.
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            You can already read how connectors declare risk and human gates in{" "}
-            <a
-              href="https://github.com/korux-ai/korux-repertoire"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary underline-offset-2 hover:underline"
-            >
-              korux-repertoire
-            </a>
-            — mail, research, social, CRM, ads, and more. If you have strong
-            opinions about where brakes should sit, bring them to{" "}
-            <a
-              href="https://github.com/orgs/korux-ai/discussions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary underline-offset-2 hover:underline"
-            >
-              GitHub Discussions
-            </a>
-            : Announcements for official updates, Ideas for features, Governance
-            for approval boundaries, and Q&amp;A for concepts.
-          </p>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
-            Waitlist is for launch access. Discussions are for shaping the
-            product in public. Use both — they serve different jobs.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              Build in the open
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Capability catalog on GitHub. Requirements in Discussions.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              You can already read how connectors declare risk and human gates in{" "}
+              <a
+                href="https://github.com/korux-ai/korux-repertoire"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                korux-repertoire
+              </a>
+              — mail, research, social, CRM, ads, and more. If you have strong
+              opinions about where brakes should sit, bring them to{" "}
+              <a
+                href="https://github.com/orgs/korux-ai/discussions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                GitHub Discussions
+              </a>
+              : Announcements for official updates, Ideas for features, Governance
+              for approval boundaries, and Q&amp;A for concepts.
+            </p>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
+              Waitlist is for launch access. Discussions are for shaping the
+              product in public. Use both — they serve different jobs.
+            </p>
+          </Reveal>
         </section>
 
         <section id="faq" className="mt-28 scroll-mt-24 md:mt-36">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            FAQ
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Korux in plain terms
-          </p>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Short answers for searchers and AI assistants: what Korux is, who it
-            serves, and how governance differs from unconstrained agent tools.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              FAQ
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Korux in plain terms
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              Short answers for searchers and AI assistants: what Korux is, who it
+              serves, and how governance differs from unconstrained agent tools.
+            </p>
+          </Reveal>
 
           <dl className="mx-auto mt-14 max-w-3xl space-y-10">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="border-t border-border pt-6">
-                <dt>
-                  <h3 className="text-base font-semibold text-foreground">
-                    {faq.question}
-                  </h3>
-                </dt>
-                <dd className="mt-3 text-sm leading-relaxed text-muted">
-                  {faq.answer}
-                </dd>
-              </div>
+            {faqs.map((faq, index) => (
+              <Reveal key={faq.question} delayMs={Math.min(index, 4) * 50}>
+                <div className="border-t border-border pt-6">
+                  <dt>
+                    <h3 className="text-base font-semibold text-foreground">
+                      {faq.question}
+                    </h3>
+                  </dt>
+                  <dd className="mt-3 text-sm leading-relaxed text-muted">
+                    {faq.answer}
+                  </dd>
+                </div>
+              </Reveal>
             ))}
           </dl>
         </section>
 
-        <section className="mt-28 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:mt-36 md:p-16">
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Ready for agents with brakes?
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
-            Join the early-access waitlist and we will notify you when Korux
-            opens. Prefer to influence defaults first? Tell us which actions
-            should never run unsupervised in Discussions.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <WaitlistForm />
-          </div>
-          <p className="mt-6 text-sm text-muted">
-            <a
-              href="https://github.com/orgs/korux-ai/discussions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary underline-offset-2 hover:underline"
-            >
-              Join the conversation on GitHub →
-            </a>
-          </p>
-        </section>
+        <Reveal>
+          <section className="mt-28 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-10 text-center md:mt-36 md:p-16">
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Ready for agents with brakes?
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
+              Join the early-access waitlist and we will notify you when Korux
+              opens. Prefer to influence defaults first? Tell us which actions
+              should never run unsupervised in Discussions.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <WaitlistForm />
+            </div>
+            <p className="mt-6 text-sm text-muted">
+              <a
+                href="https://github.com/orgs/korux-ai/discussions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                Join the conversation on GitHub →
+              </a>
+            </p>
+          </section>
+        </Reveal>
       </main>
 
       <footer className="border-t border-border py-8">

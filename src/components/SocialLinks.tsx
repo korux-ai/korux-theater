@@ -45,7 +45,7 @@ export function SocialLinks() {
         rel="noopener noreferrer"
         className={`${linkClass} text-sm`}
       >
-        Discuss on GitHub
+        Discussions
       </a>
       <a href="mailto:kenny.yue@gmail.com" className={`${linkClass} text-sm`}>
         kenny.yue@gmail.com

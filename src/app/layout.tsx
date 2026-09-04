@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { JsonLd } from "@/components/JsonLd";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { themeInitScript } from "@/lib/theme-init";
 import "./globals.css";
 
 const siteUrl = "https://korux.ai";
@@ -108,13 +111,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <JsonLd data={organizationJsonLd} />
-        <JsonLd data={softwareJsonLd} />
-        {children}
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+        <ThemeProvider>
+          <JsonLd data={organizationJsonLd} />
+          <JsonLd data={softwareJsonLd} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
