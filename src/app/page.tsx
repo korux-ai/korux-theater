@@ -2,24 +2,26 @@ import Image from "next/image";
 import { SocialLinks } from "@/components/SocialLinks";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
-const contrasts = [
+const emergingNeeds = [
   {
-    title: "Workflow tools",
-    examples: "n8n, Zapier, Make",
-    strength: "Excellent at wiring apps together and showing run history.",
-    gap: "Weak agent identity, weak per-agent secret isolation, and little native governance when something leaves your perimeter.",
+    title: "NL → workflow",
+    detail:
+      "Describe the job in natural language, get a Workflow Spec you can review, then confirm before anything runs. Authoring should feel conversational — execution should stay explicit.",
   },
   {
-    title: "Agent frameworks",
-    examples: "CrewAI, AutoGen, LangGraph apps",
-    strength: "Powerful multi-agent logic for developers who can code the whole stack.",
-    gap: "Thin business UI and thin production guardrails for high-stakes side effects — email, CRM writes, trades, ads.",
+    title: "Governor on side effects",
+    detail:
+      "When an agent is about to email, publish, write to CRM, or otherwise leave your boundary, runtime rules can pause the action. Governance travels with the capability, not as an afterthought.",
   },
   {
-    title: "AI employee apps",
-    examples: "Lindy-class products",
-    strength: "Easy hiring metaphor and templates that feel approachable.",
-    gap: "Risk control is often opaque. Auditability is limited. You scale the agent before you can prove the brake works.",
+    title: "Human-in-the-loop first",
+    detail:
+      "Approvals are a product surface: approve, reject, edit, or always-allow similar — with a designated Approver who does not need the whole vault.",
+  },
+  {
+    title: "Identity, secrets, and trail",
+    detail:
+      "Agents have roles and scoped credentials. Keys stay out of the model. Intercepts and runs stay readable so you can answer what happened and who decided.",
   },
 ];
 
@@ -175,33 +177,28 @@ export default function Home() {
 
         <section className="mt-28 md:mt-36">
           <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
-            The false choice
+            A new kind of need
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Most AI platforms force you to pick speed or control
+            Agents that act in the world need a different operating layer
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Workflow tools automate apps but barely model agents. Frameworks give
-            developers multi-agent power without production brakes. AI employee
-            apps feel easy — until you cannot see who approved what. Korux is
-            built for solopreneurs and small teams who want scaling power{" "}
-            <em className="text-foreground not-italic font-medium">and</em>{" "}
-            enterprise-grade command: many agents, one Governor.
+            Korux exists for a job that is becoming common: virtual staff that
+            can research, draft, and take real-world actions — with command still
+            in human hands. We are not here to replace every automation or agent
+            stack. We are building the layer for{" "}
+            <span className="font-medium text-foreground">
+              natural language → confirmed workflow
+            </span>
+            , runtime governance on external side effects, and human-in-the-loop
+            as a first-class path.
           </p>
 
-          <div className="mt-14 grid gap-12 sm:grid-cols-3">
-            {contrasts.map((item) => (
+          <div className="mt-14 grid gap-10 sm:grid-cols-2">
+            {emergingNeeds.map((item) => (
               <div key={item.title} className="border-t border-border pt-6">
                 <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-1 text-xs uppercase tracking-wide text-muted">{item.examples}</p>
-                <p className="mt-4 text-sm leading-relaxed text-foreground/90">
-                  <span className="font-medium text-foreground">Strength: </span>
-                  {item.strength}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
-                  <span className="font-medium text-foreground">Gap: </span>
-                  {item.gap}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -215,10 +212,10 @@ export default function Home() {
             Autonomy with governance — trustworthy scale for a one-person company
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Korux is not a generic chatbot toolkit. The product value is{" "}
+            The product value is{" "}
             <span className="text-foreground font-medium">trustworthy scale</span>
             : many agents under explicit command, with border control on data and
-            side effects. Below is what that looks like in practice.
+            side effects. Below is how Korux approaches that job.
           </p>
 
           <div className="mt-16 space-y-14">
