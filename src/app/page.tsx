@@ -28,7 +28,7 @@ const emergingNeeds = [
 const pillars = [
   {
     title: "Governor",
-    lead: "A dedicated runtime layer that watches agents where it matters — on external side effects.",
+    lead: "A dedicated Governor that watches agents where it matters — on external side effects.",
     body: "When an action looks risky or crosses an Internal → External boundary, Korux can pause the workflow and route the decision to a human instead of hoping a post-mortem catches it. Policies can encode rate limits, amount thresholds, forbidden actions, and connector-level rules so governance travels with the capability — not as a spreadsheet you remember later.",
     points: [
       "Intercept before send, publish, mutate, or trade",
@@ -162,9 +162,9 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-            Orchestrate AI employees with scoped secrets, visual workflows, and
-            built-in risk control — so you can scale a multi-agent workforce
-            without losing command.
+            Build and safely run AI agents for everyday workflows — no technology
+            background required. Stay focused on your business; Korux handles
+            confirmed workflows, governance, and human approval.
           </p>
 
           <div id="waitlist" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
@@ -180,18 +180,21 @@ export default function Home() {
             A new kind of need
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Agents that act in the world need a different operating layer
+            A platform for the new work of AI agents — easy to build, safe to run
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-            Korux exists for a job that is becoming common: virtual staff that
-            can research, draft, and take real-world actions — with command still
-            in human hands. We are not here to replace every automation or agent
-            stack. We are building the layer for{" "}
+            Korux is built for a need that is becoming common: virtual staff that
+            can research, draft, and take real-world actions — while people stay
+            in command. Our aim is simple: anyone should be able to build and
+            safely use AI agents to take over repetitive daily workflows, without
+            a technology background — staying focused on their business and
+            process. That means{" "}
             <span className="font-medium text-foreground">
               natural language → confirmed workflow
             </span>
             , runtime governance on external side effects, and human-in-the-loop
-            as a first-class path.
+            as a first-class path — designed into one platform, not bolted on
+            later.
           </p>
 
           <div className="mt-14 grid gap-10 sm:grid-cols-2">
@@ -215,7 +218,8 @@ export default function Home() {
             The product value is{" "}
             <span className="text-foreground font-medium">trustworthy scale</span>
             : many agents under explicit command, with border control on data and
-            side effects. Below is how Korux approaches that job.
+            side effects — so people who know the work can automate it safely.
+            Below is how the platform supports that.
           </p>
 
           <div className="mt-16 space-y-14">
