@@ -7,9 +7,9 @@ import { themeInitScript } from "@/lib/theme-init";
 import "./globals.css";
 
 const siteUrl = "https://korux.ai";
-const title = "Korux — Governed AI Workforce OS";
+const title = "Korux — AI Agents with Human-in-the-Loop Governance";
 const description =
-  "Korux is the Governed AI Workforce OS, still under active development. Join the waitlist to hear when it opens.";
+  "Build and safely run AI agents for everyday workflows. Natural language → confirmed workflow, AI agent governance on external actions, and human-in-the-loop approval before email, CRM, or publish. Join the waitlist.";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +31,17 @@ export const metadata: Metadata = {
   applicationName: "Korux",
   keywords: [
     "Korux",
-    "AI workforce",
+    "AI agents",
+    "human-in-the-loop AI agents",
+    "AI agent governance",
+    "agentic AI governance",
+    "AI agent approval workflow",
+    "natural language to workflow",
     "governed AI agents",
-    "human-in-the-loop",
-    "AI agent platform",
-    "workflow automation",
-    "AI governance",
+    "AI workforce OS",
+    "agent workflow automation",
+    "AI agent human approval",
+    "external side effects AI agents",
   ],
   authors: [{ name: "Korux", url: siteUrl }],
   creator: "Korux",
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      "Autonomy with governance: multi-agent workforce, per-agent vault, and human approval before high-stakes actions.",
+      "AI agents for everyday work with human-in-the-loop governance: confirmed workflows, per-agent secrets, and approval before high-stakes actions.",
     url: siteUrl,
     siteName: "Korux",
     locale: "en_US",
@@ -60,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description:
-      "Autonomy with governance: multi-agent workforce, per-agent vault, and human approval before high-stakes actions.",
+      "AI agents for everyday work with human-in-the-loop governance: confirmed workflows, per-agent secrets, and approval before high-stakes actions.",
   },
   robots: {
     index: true,
@@ -79,7 +84,7 @@ const organizationJsonLd = {
     "https://github.com/orgs/korux-ai/discussions",
   ],
   description:
-    "Korux is the Governed AI Workforce OS — AI agents with scoped secrets, confirmed workflows, and human approval before external side effects.",
+    "Korux helps people build and safely run AI agents for everyday workflows — with AI agent governance, human-in-the-loop approvals, and natural language to confirmed workflow.",
 };
 
 const softwareJsonLd = {
@@ -90,7 +95,14 @@ const softwareJsonLd = {
   operatingSystem: "Web",
   url: siteUrl,
   description:
-    "A platform to build and safely run AI agents for everyday workflows, with a Governor on external side effects and human-in-the-loop approvals.",
+    "Governed AI agent platform: natural language to workflow, human-in-the-loop AI agents, and runtime governance before external side effects like email or CRM writes.",
+  featureList: [
+    "Natural language to confirmed workflow",
+    "Human-in-the-loop AI agent approvals",
+    "AI agent governance on external side effects",
+    "Per-agent secret vault",
+    "Audit and intercept visibility",
+  ],
   offers: {
     "@type": "Offer",
     price: "0",

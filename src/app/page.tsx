@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -131,7 +132,22 @@ const faqs = [
   {
     question: "What is Korux?",
     answer:
-      "Korux is the Governed AI Workforce OS: a platform to build and safely run AI agents for everyday workflows. It combines natural-language workflow authoring, per-agent secrets, a Governor on external side effects, and human-in-the-loop approvals in one product.",
+      "Korux is a platform to build and safely run AI agents for everyday workflows. It combines natural language to confirmed workflow, per-agent secrets, AI agent governance on external side effects, and human-in-the-loop approvals in one product.",
+  },
+  {
+    question: "What are human-in-the-loop AI agents?",
+    answer:
+      "Human-in-the-loop AI agents can research, draft, and prepare actions, but pause at high-stakes moments for a person to approve, edit, or reject — especially before external side effects like sending email, publishing, or writing to CRM. Korux treats this approval path as a first-class product surface, not an afterthought.",
+  },
+  {
+    question: "What is AI agent governance?",
+    answer:
+      "AI agent governance means runtime rules that control what agents are allowed to do when they act in the world. In Korux, a Governor can intercept risky or external actions, pause the workflow, and route the decision to a human, with connector-level policies and a readable audit trail.",
+  },
+  {
+    question: "How does natural language to workflow work in Korux?",
+    answer:
+      "You describe the job in everyday language. Korux proposes a Workflow Spec you can review, then you confirm before anything runs. Authoring stays conversational; execution stays explicit and governed.",
   },
   {
     question: "Where does the name Korux come from?",
@@ -144,14 +160,9 @@ const faqs = [
       "It nods to an Eastern saying (duō duō yì shàn) linked to Han Xin: forces grow stronger under clear command. On Korux, more AI agents should mean more work done — with the Governor and human approval as the command that keeps scale trustworthy.",
   },
   {
-    question: "How is Korux different from a typical AI agent or chatbot tool?",
-    answer:
-      "Most agent tools optimize for autonomy and speed. Korux treats governance as a first-class runtime: when an agent is about to email, publish, write to CRM, or otherwise leave your boundary, rules can pause the action for human approval. Secrets stay scoped per agent and out of the model context.",
-  },
-  {
     question: "Who is Korux for?",
     answer:
-      "Korux is aimed first at solopreneurs and founder-operators who want virtual staff, plus small teams with a trusted Approver. It is for people who want AI to take over repetitive work without giving up control of high-stakes side effects.",
+      "Korux is aimed first at solopreneurs and founder-operators who want virtual staff, plus small teams with a trusted Approver. It is for people who want AI agent workflow automation without a deep technology background — staying focused on business process while keeping control of side effects.",
   },
   {
     question: "What does the Governor do?",
@@ -197,6 +208,12 @@ export default function Home() {
           >
             Discussions
           </a>
+          <Link
+            href="/human-in-the-loop-ai-agents"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary md:inline"
+          >
+            Guides
+          </Link>
           <a
             href="#waitlist"
             className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
@@ -451,6 +468,51 @@ export default function Home() {
           </Reveal>
         </section>
 
+        <section className="mt-28 md:mt-36">
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              Guides
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Dig deeper into the ideas behind Korux
+            </p>
+          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-3xl gap-10 sm:grid-cols-2">
+            <Reveal>
+              <div className="border-t border-border pt-6">
+                <h3 className="text-lg font-semibold text-foreground">
+                  <Link
+                    href="/human-in-the-loop-ai-agents"
+                    className="transition-colors hover:text-primary"
+                  >
+                    Human-in-the-loop AI agents
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  When agents should pause for approval — and how HITL becomes a
+                  product path, not a policy sentence.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delayMs={70}>
+              <div className="border-t border-border pt-6">
+                <h3 className="text-lg font-semibold text-foreground">
+                  <Link
+                    href="/ai-agent-governance"
+                    className="transition-colors hover:text-primary"
+                  >
+                    AI agent governance
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  Runtime rules before external side effects: boundaries, secrets,
+                  approvals, and readable trails.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <section id="faq" className="mt-28 scroll-mt-24 md:mt-36">
           <Reveal>
             <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
@@ -460,8 +522,9 @@ export default function Home() {
               Korux in plain terms
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-              Short answers for searchers and AI assistants: what Korux is, who it
-              serves, and how governance differs from unconstrained agent tools.
+              Short answers on human-in-the-loop AI agents, AI agent governance,
+              natural language to workflow, and who Korux is for — written for
+              people and for search.
             </p>
           </Reveal>
 
@@ -511,12 +574,25 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-border py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted sm:flex-row">
-          <div className="flex items-center gap-2">
-            <Image src="/logo-mark.svg" alt="" width={20} height={20} />
-            <span>© {new Date().getFullYear()} Korux.ai</span>
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 text-sm text-muted">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <Image src="/logo-mark.svg" alt="" width={20} height={20} />
+              <span>© {new Date().getFullYear()} Korux.ai</span>
+            </div>
+            <SocialLinks />
           </div>
-          <SocialLinks />
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:justify-start">
+            <Link
+              href="/human-in-the-loop-ai-agents"
+              className="transition-colors hover:text-primary"
+            >
+              Human-in-the-loop AI agents
+            </Link>
+            <Link href="/ai-agent-governance" className="transition-colors hover:text-primary">
+              AI agent governance
+            </Link>
+          </nav>
         </div>
       </footer>
     </div>
