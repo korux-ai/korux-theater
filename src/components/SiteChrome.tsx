@@ -19,14 +19,20 @@ export function SiteChrome({ children, waitlistHref = "/#waitlist" }: SiteChrome
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <Link
-            href="/human-in-the-loop-ai-agents"
+            href="/agentic-ai"
             className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary md:inline"
           >
-            HITL
+            Agentic AI
+          </Link>
+          <Link
+            href="/agent-control-plane"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary lg:inline"
+          >
+            Control plane
           </Link>
           <Link
             href="/ai-agent-governance"
-            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary lg:inline"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary xl:inline"
           >
             Governance
           </Link>
@@ -61,6 +67,15 @@ export function SiteChrome({ children, waitlistHref = "/#waitlist" }: SiteChrome
           <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:justify-start">
             <Link href="/" className="transition-colors hover:text-primary">
               Home
+            </Link>
+            <Link href="/agentic-ai" className="transition-colors hover:text-primary">
+              What is agentic AI?
+            </Link>
+            <Link
+              href="/agent-control-plane"
+              className="transition-colors hover:text-primary"
+            >
+              Agent control plane
             </Link>
             <Link
               href="/human-in-the-loop-ai-agents"

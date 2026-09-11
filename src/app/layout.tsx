@@ -7,9 +7,9 @@ import { themeInitScript } from "@/lib/theme-init";
 import "./globals.css";
 
 const siteUrl = "https://korux.ai";
-const title = "Korux — AI Agents with Human-in-the-Loop Governance";
+const title = "Korux — Agentic AI with Human-in-the-Loop Governance";
 const description =
-  "Build and safely run AI agents for everyday workflows. Natural language → confirmed workflow, AI agent governance on external actions, and human-in-the-loop approval before email, CRM, or publish. Join the waitlist.";
+  "Build and safely run agentic AI workflows for everyday work. Natural language → confirmed Spec, AI agent guardrails on external actions, and human-in-the-loop approval before email, CRM, or publish. Join the waitlist.";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,16 +31,20 @@ export const metadata: Metadata = {
   applicationName: "Korux",
   keywords: [
     "Korux",
+    "agentic AI",
     "AI agents",
-    "human-in-the-loop AI agents",
-    "AI agent governance",
     "agentic AI governance",
+    "AI agent governance",
+    "agent control plane",
+    "AI agent guardrails",
+    "human-in-the-loop AI agents",
+    "autonomous AI agents",
     "AI agent approval workflow",
     "natural language to workflow",
     "governed AI agents",
     "AI workforce OS",
     "agent workflow automation",
-    "AI agent human approval",
+    "AI coworker",
     "external side effects AI agents",
   ],
   authors: [{ name: "Korux", url: siteUrl }],
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      "AI agents for everyday work with human-in-the-loop governance: confirmed workflows, per-agent secrets, and approval before high-stakes actions.",
+      "Agentic AI for everyday work with human-in-the-loop governance: confirmed workflows, AI agent guardrails, and approval before high-stakes actions.",
     url: siteUrl,
     siteName: "Korux",
     locale: "en_US",
@@ -65,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description:
-      "AI agents for everyday work with human-in-the-loop governance: confirmed workflows, per-agent secrets, and approval before high-stakes actions.",
+      "Agentic AI for everyday work with human-in-the-loop governance: confirmed workflows, AI agent guardrails, and approval before high-stakes actions.",
   },
   robots: {
     index: true,
@@ -84,7 +88,7 @@ const organizationJsonLd = {
     "https://github.com/orgs/korux-ai/discussions",
   ],
   description:
-    "Korux helps people build and safely run AI agents for everyday workflows — with AI agent governance, human-in-the-loop approvals, and natural language to confirmed workflow.",
+    "Korux helps people build and safely run agentic AI workflows — with AI agent governance, human-in-the-loop approvals, and natural language to confirmed workflow.",
 };
 
 const softwareJsonLd = {
@@ -95,11 +99,11 @@ const softwareJsonLd = {
   operatingSystem: "Web",
   url: siteUrl,
   description:
-    "Governed AI agent platform: natural language to workflow, human-in-the-loop AI agents, and runtime governance before external side effects like email or CRM writes.",
+    "Governed agentic AI platform: natural language to workflow, human-in-the-loop AI agents, AI agent guardrails, and runtime governance before external side effects like email or CRM writes.",
   featureList: [
     "Natural language to confirmed workflow",
     "Human-in-the-loop AI agent approvals",
-    "AI agent governance on external side effects",
+    "AI agent governance and guardrails on external side effects",
     "Per-agent secret vault",
     "Audit and intercept visibility",
   ],

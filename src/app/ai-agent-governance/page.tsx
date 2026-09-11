@@ -4,9 +4,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteChrome } from "@/components/SiteChrome";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
-const title = "AI Agent Governance — Runtime Rules Before External Side Effects";
+const title = "AI Agent Governance — Runtime Guardrails Before External Side Effects";
 const description =
-  "What AI agent governance means in practice: runtime rules, Internal vs External boundaries, human approval, and audit trails. How Korux approaches governed AI agents.";
+  "What AI agent governance and agentic AI guardrails mean in practice: runtime rules, agent control-plane ideas, Internal vs External boundaries, human approval, and audit trails. How Korux approaches governed agentic AI.";
 
 export const metadata: Metadata = {
   title,
@@ -32,6 +32,11 @@ const faqs = [
     question: "What is AI agent governance?",
     answer:
       "AI agent governance is the set of runtime controls that decide what agents may do when they act in the world — policies, intercepts, human approval, least-privilege credentials, and audit trails — so autonomy does not become unsupervised liability.",
+  },
+  {
+    question: "How does agentic AI change governance?",
+    answer:
+      "Agentic AI systems take multi-step tool actions, so governance must sit on each external write — not only on the model’s training or a prompt. That is why agent control planes, guardrails, and human-in-the-loop checkpoints are rising together.",
   },
   {
     question: "Why do AI agents need governance?",
@@ -82,7 +87,7 @@ export default function AiAgentGovernancePage() {
           AI agent governance
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-muted">
-          As agents move from answering questions to taking actions, governance
+          As agentic AI moves from answering questions to taking actions, governance
           stops being a slide deck. It becomes the difference between helpful
           automation and an unsupervised insider with your credentials.
         </p>
@@ -99,7 +104,10 @@ export default function AiAgentGovernancePage() {
               </strong>{" "}
               — especially when those actions write outside your perimeter.
               Policies, intercepts, approvals, scoped secrets, and audits turn
-              “be careful” into something the system can enforce.
+              “be careful” into something the system can enforce. People also call
+              these controls{" "}
+              <strong className="font-medium text-foreground">AI agent guardrails</strong>
+              {" "}when they evaluate tool calls before execution.
             </p>
             <p className="mt-4">
               It is related to broader AI governance (risk frameworks, compliance),
@@ -108,6 +116,39 @@ export default function AiAgentGovernancePage() {
                 can this agent send that email, update that CRM record, or publish
                 that post without a human gate?
               </em>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold tracking-tight text-foreground">
+              Agentic AI and the agent control plane
+            </h2>
+            <p className="mt-4">
+              Search interest in an{" "}
+              <strong className="font-medium text-foreground">agent control plane</strong>
+              {" "}rose as companies stopped managing one demo agent and started
+              running many. The idea is operational: inventory agents, enforce
+              policy on tool use, and keep a trail you can explain. Korux focuses
+              that same need for founder-operators — not an enterprise fleet
+              console first, but a Governor, human approvals, and readable runs on
+              the workflows that touch the outside world.
+            </p>
+            <p className="mt-4">
+              For a plain-language primer, see{" "}
+              <Link
+                href="/agentic-ai"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                What is agentic AI?
+              </Link>
+              {" "}and{" "}
+              <Link
+                href="/agent-control-plane"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                agent control plane for solopreneurs
+              </Link>
+              .
             </p>
           </section>
 
@@ -193,6 +234,13 @@ export default function AiAgentGovernancePage() {
             </p>
             <p className="mt-4">
               Next:{" "}
+              <Link
+                href="/agentic-ai"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                What is agentic AI?
+              </Link>
+              {" "}·{" "}
               <Link
                 href="/human-in-the-loop-ai-agents"
                 className="font-medium text-primary underline-offset-2 hover:underline"

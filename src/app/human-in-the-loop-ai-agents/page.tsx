@@ -171,6 +171,20 @@ export default function HumanInTheLoopPage() {
             <p className="mt-4">
               Related reading:{" "}
               <Link
+                href="/agentic-ai"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                What is agentic AI?
+              </Link>
+              {" "}·{" "}
+              <Link
+                href="/agent-control-plane"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                Agent control plane
+              </Link>
+              {" "}·{" "}
+              <Link
                 href="/ai-agent-governance"
                 className="font-medium text-primary underline-offset-2 hover:underline"
               >

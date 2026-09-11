@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DemoStoryStrip } from "@/components/DemoStoryStrip";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -132,7 +133,12 @@ const faqs = [
   {
     question: "What is Korux?",
     answer:
-      "Korux is a platform to build and safely run AI agents for everyday workflows. It combines natural language to confirmed workflow, per-agent secrets, AI agent governance on external side effects, and human-in-the-loop approvals in one product.",
+      "Korux is a platform to build and safely run agentic AI workflows for everyday work. It combines natural language to confirmed workflow, per-agent secrets, AI agent governance on external side effects, and human-in-the-loop approvals in one product.",
+  },
+  {
+    question: "What is agentic AI?",
+    answer:
+      "Agentic AI refers to AI systems that can pursue a goal across multiple steps — planning, using tools, and taking actions — rather than only generating a one-shot chat reply. Korux focuses on governed agentic workflows: agents can prepare work quickly, while high-stakes external actions wait for a human decision.",
   },
   {
     question: "What are human-in-the-loop AI agents?",
@@ -143,6 +149,16 @@ const faqs = [
     question: "What is AI agent governance?",
     answer:
       "AI agent governance means runtime rules that control what agents are allowed to do when they act in the world. In Korux, a Governor can intercept risky or external actions, pause the workflow, and route the decision to a human, with connector-level policies and a readable audit trail.",
+  },
+  {
+    question: "What is an agent control plane?",
+    answer:
+      "An agent control plane is the operational layer people search for when agent fleets grow: inventory, policy enforcement, and audit of what agents may do. Korux approaches the same need for founder-operators — Governor rules, human approval, scoped secrets, and readable runs — so agentic autonomy stays under clear command. Read more at https://korux.ai/agent-control-plane.",
+  },
+  {
+    question: "What are AI agent guardrails?",
+    answer:
+      "AI agent guardrails are runtime controls that allow, deny, or require human approval before a tool action executes. In Korux, connector-level governor packs and Internal → External boundaries act as practical guardrails — enforced in the product path, not only as prompt instructions.",
   },
   {
     question: "How does natural language to workflow work in Korux?",
@@ -200,6 +216,24 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
+          <Link
+            href="/agentic-ai"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary md:inline"
+          >
+            Agentic AI
+          </Link>
+          <Link
+            href="/agent-control-plane"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary lg:inline"
+          >
+            Control plane
+          </Link>
+          <Link
+            href="/ai-agent-governance"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary xl:inline"
+          >
+            Governance
+          </Link>
           <a
             href="https://github.com/orgs/korux-ai/discussions"
             target="_blank"
@@ -208,12 +242,6 @@ export default function Home() {
           >
             Discussions
           </a>
-          <Link
-            href="/human-in-the-loop-ai-agents"
-            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-primary md:inline"
-          >
-            Guides
-          </Link>
           <a
             href="#waitlist"
             className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
@@ -235,9 +263,9 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-            Build and safely run AI agents for everyday workflows — no technology
+            Build and safely run agentic AI for everyday workflows — no technology
             background required. Stay focused on your business; Korux handles
-            confirmed workflows, governance, and human approval.
+            confirmed workflows, AI agent guardrails, and human approval.
           </p>
 
           <div id="waitlist" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
@@ -246,6 +274,24 @@ export default function Home() {
               Still building — we&apos;ll email when it opens. No spam.
             </p>
           </div>
+        </section>
+
+        <section id="see-it" className="mt-16 scroll-mt-24 md:mt-20">
+          <Reveal>
+            <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+              See the problem
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Agents can draft the outbound email. Korux makes sure a human still holds the send.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
+              A real early-build walkthrough: natural language → confirmed Spec →
+              Governor pause → approve or reject. This is the gap Korux is built to close.
+            </p>
+          </Reveal>
+          <Reveal delayMs={80}>
+            <DemoStoryStrip />
+          </Reveal>
         </section>
 
         <section className="mt-28 md:mt-36">
@@ -477,8 +523,37 @@ export default function Home() {
               Dig deeper into the ideas behind Korux
             </p>
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-3xl gap-10 sm:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-10 sm:grid-cols-2">
             <Reveal>
+              <div className="border-t border-border pt-6">
+                <h3 className="text-lg font-semibold text-foreground">
+                  <Link href="/agentic-ai" className="transition-colors hover:text-primary">
+                    What is agentic AI?
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  How agentic AI differs from chatbots — and why control planes,
+                  guardrails, and human approval are rising with it.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delayMs={70}>
+              <div className="border-t border-border pt-6">
+                <h3 className="text-lg font-semibold text-foreground">
+                  <Link
+                    href="/agent-control-plane"
+                    className="transition-colors hover:text-primary"
+                  >
+                    Agent control plane for solopreneurs
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  What the trending phrase means — and the control jobs founders
+                  need before “enterprise fleet” scale.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delayMs={140}>
               <div className="border-t border-border pt-6">
                 <h3 className="text-lg font-semibold text-foreground">
                   <Link
@@ -494,7 +569,7 @@ export default function Home() {
                 </p>
               </div>
             </Reveal>
-            <Reveal delayMs={70}>
+            <Reveal delayMs={210}>
               <div className="border-t border-border pt-6">
                 <h3 className="text-lg font-semibold text-foreground">
                   <Link
@@ -522,9 +597,9 @@ export default function Home() {
               Korux in plain terms
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted">
-              Short answers on human-in-the-loop AI agents, AI agent governance,
-              natural language to workflow, and who Korux is for — written for
-              people and for search.
+              Short answers on agentic AI, agent control planes, AI agent guardrails,
+              human-in-the-loop approvals, and who Korux is for — written for people
+              and for search.
             </p>
           </Reveal>
 
@@ -583,6 +658,18 @@ export default function Home() {
             <SocialLinks />
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:justify-start">
+            <Link
+              href="/agentic-ai"
+              className="transition-colors hover:text-primary"
+            >
+              What is agentic AI?
+            </Link>
+            <Link
+              href="/agent-control-plane"
+              className="transition-colors hover:text-primary"
+            >
+              Agent control plane
+            </Link>
             <Link
               href="/human-in-the-loop-ai-agents"
               className="transition-colors hover:text-primary"

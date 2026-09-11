@@ -11,6 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://korux.ai/agentic-ai",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: "https://korux.ai/agent-control-plane",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: "https://korux.ai/human-in-the-loop-ai-agents",
       lastModified,
       changeFrequency: "monthly",
