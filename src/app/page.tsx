@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { SocialLinks } from "@/components/SocialLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { TRY_KORUX_URL } from "@/lib/site";
 
 const emergingNeeds = [
   {
@@ -188,7 +189,7 @@ const faqs = [
   {
     question: "Is Korux available today?",
     answer:
-      "Not yet as a public product — Korux is still under active development. Join the waitlist on korux.ai to hear when early access opens. Meanwhile, capability packages and governance patterns are visible in the open korux-repertoire catalog on GitHub, and product direction is shaped in GitHub Discussions.",
+      "Yes — request a 7-day trial with your email on korux.ai. We'll send an invite link so you can create a password; after that, sign in anytime via Try Korux at try.korux.ai. Capability packages and governance patterns are also visible in the open korux-repertoire catalog on GitHub.",
   },
 ];
 
@@ -243,10 +244,12 @@ export default function Home() {
             Discussions
           </a>
           <a
-            href="#waitlist"
+            href={TRY_KORUX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
           >
-            Join Waitlist
+            Try Korux
           </a>
         </div>
       </header>
@@ -268,10 +271,20 @@ export default function Home() {
             confirmed workflows, AI agent guardrails, and human approval.
           </p>
 
-          <div id="waitlist" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
+          <div id="trial" className="animate-fade-up-delay-3 mt-10 scroll-mt-24">
             <WaitlistForm />
             <p className="mt-3 text-xs text-muted">
-              Still building — we&apos;ll email when it opens. No spam.
+              Request a 7-day trial — we&apos;ll email an invite link. After you set
+              a password, sign in anytime at{" "}
+              <a
+                href={TRY_KORUX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
+                try.korux.ai
+              </a>
+              .
             </p>
           </div>
         </section>
@@ -508,7 +521,7 @@ export default function Home() {
               for approval boundaries, and Q&amp;A for concepts.
             </p>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
-              The waitlist is for launch updates while we build. Discussions are for
+              Request a 7-day trial on this page (we email an invite). Discussions are for
               shaping the product in public. Use both — they serve different jobs.
             </p>
           </Reveal>
@@ -627,9 +640,9 @@ export default function Home() {
               Want agents with brakes?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
-              Korux is still under development. Join the waitlist and we will notify
-              you when it opens. Prefer to influence defaults first? Tell us which
-              actions should never run unsupervised in Discussions.
+              Request a 7-day trial with your email — we&apos;ll send an invite
+              link. Prefer to influence defaults first? Tell us which actions should
+              never run unsupervised in Discussions.
             </p>
             <div className="mt-8 flex justify-center">
               <WaitlistForm />
@@ -658,6 +671,14 @@ export default function Home() {
             <SocialLinks />
           </div>
           <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:justify-start">
+            <a
+              href={TRY_KORUX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-primary"
+            >
+              Try Korux
+            </a>
             <Link
               href="/agentic-ai"
               className="transition-colors hover:text-primary"

@@ -9,7 +9,7 @@ import "./globals.css";
 const siteUrl = "https://korux.ai";
 const title = "Korux — Agentic AI with Human-in-the-Loop Governance";
 const description =
-  "Build and safely run agentic AI workflows for everyday work. Natural language → confirmed Spec, AI agent guardrails on external actions, and human-in-the-loop approval before email, CRM, or publish. Join the waitlist.";
+  "Build and safely run agentic AI workflows for everyday work. Natural language → confirmed Spec, AI agent guardrails on external actions, and human-in-the-loop approval before email, CRM, or publish. Request a 7-day trial.";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,6 +84,7 @@ const organizationJsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logo.svg`,
   sameAs: [
+    "https://try.korux.ai",
     "https://github.com/korux-ai",
     "https://github.com/orgs/korux-ai/discussions",
   ],
@@ -111,8 +112,8 @@ const softwareJsonLd = {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
-    availability: "https://schema.org/PreOrder",
-    description: "Waitlist for the upcoming public release",
+    availability: "https://schema.org/OnlineOnly",
+    description: "Request a 7-day trial; invite emailed for signup at try.korux.ai",
   },
   publisher: {
     "@type": "Organization",

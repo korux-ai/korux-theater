@@ -265,15 +265,23 @@ export default function AiAgentGovernancePage() {
         </article>
 
         <section
-          id="waitlist"
+          id="trial"
           className="mt-16 scroll-mt-24 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 text-center md:p-12"
         >
           <h2 className="text-2xl font-bold text-foreground">
             Building governance into everyday agent work
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-            Join the Korux waitlist for early access to a platform where AI agent
-            governance is designed in — not bolted on later.
+            Request a 7-day trial — we&apos;ll email an invite link. Then sign in at{" "}
+            <a
+              href="https://try.korux.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              try.korux.ai
+            </a>
+            .
           </p>
           <div className="mt-8 flex justify-center">
             <WaitlistForm />

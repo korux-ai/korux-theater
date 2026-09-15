@@ -233,15 +233,23 @@ export default function AgentControlPlanePage() {
         </article>
 
         <section
-          id="waitlist"
+          id="trial"
           className="mt-16 scroll-mt-24 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 text-center md:p-12"
         >
           <h2 className="text-2xl font-bold text-foreground">
             Want a control plane that fits one-person companies?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-            Join the Korux waitlist for early access. We are still building — we
-            will email when it opens.
+            Request a 7-day trial — we&apos;ll email an invite link. Then sign in at{" "}
+            <a
+              href="https://try.korux.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              try.korux.ai
+            </a>
+            .
           </p>
           <div className="mt-8 flex justify-center">
             <WaitlistForm />

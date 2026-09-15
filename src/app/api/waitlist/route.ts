@@ -22,25 +22,28 @@ export async function POST(request: NextRequest) {
 
   if (!supabase) {
     return NextResponse.json(
-      { error: "Waitlist is not configured yet. Please try again later." },
+      { error: "Trial requests are not configured yet. Please try again later." },
       { status: 503 },
     );
   }
 
   const { error } = await supabase.from("waitlist").insert({
     email,
-    source: "landing",
+    source: "trial-7d",
   });
 
   if (error) {
     if (error.code === "23505") {
       return NextResponse.json(
-        { message: "You're already on the list! We'll email when Korux opens." },
+        {
+          message:
+            "This email already requested a trial. Check your inbox for the invite, or sign in at try.korux.ai if you already have an account.",
+        },
         { status: 200 },
       );
     }
 
-    console.error("Waitlist insert error:", error);
+    console.error("Trial signup insert error:", error);
     return NextResponse.json(
       { error: "Could not save your email. Please try again." },
       { status: 500 },
@@ -48,7 +51,10 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json(
-    { message: "You're on the list! We'll email when Korux opens." },
+    {
+      message:
+        "Request received. We'll email you an invite link to create your password and start the 7-day trial.",
+    },
     { status: 201 },
   );
 }

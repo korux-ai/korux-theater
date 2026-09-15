@@ -30,7 +30,10 @@ export function WaitlistForm() {
       }
 
       setStatus("success");
-      setMessage(data.message ?? "You're on the list!");
+      setMessage(
+        data.message ??
+          "Request received. We'll email you an invite link to set your password.",
+      );
       setEmail("");
     } catch {
       setStatus("error");
@@ -57,7 +60,11 @@ export function WaitlistForm() {
           disabled={status === "loading" || status === "success"}
           className="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status === "loading" ? "Joining…" : status === "success" ? "Joined ✓" : "Join Waitlist"}
+          {status === "loading"
+            ? "Sending…"
+            : status === "success"
+              ? "Requested ✓"
+              : "Request 7-day trial"}
         </button>
       </form>
 

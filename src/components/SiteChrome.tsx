@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { SocialLinks } from "@/components/SocialLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { TRY_KORUX_URL } from "@/lib/site";
 
 type SiteChromeProps = {
   children: React.ReactNode;
-  waitlistHref?: string;
 };
 
-export function SiteChrome({ children, waitlistHref = "/#waitlist" }: SiteChromeProps) {
+export function SiteChrome({ children }: SiteChromeProps) {
   return (
     <div className="min-h-screen">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
@@ -44,12 +44,14 @@ export function SiteChrome({ children, waitlistHref = "/#waitlist" }: SiteChrome
           >
             Discussions
           </a>
-          <Link
-            href={waitlistHref}
+          <a
+            href={TRY_KORUX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
           >
-            Join Waitlist
-          </Link>
+            Try Korux
+          </a>
         </div>
       </header>
 
@@ -68,6 +70,14 @@ export function SiteChrome({ children, waitlistHref = "/#waitlist" }: SiteChrome
             <Link href="/" className="transition-colors hover:text-primary">
               Home
             </Link>
+            <a
+              href={TRY_KORUX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-primary"
+            >
+              Try Korux
+            </a>
             <Link href="/agentic-ai" className="transition-colors hover:text-primary">
               What is agentic AI?
             </Link>
